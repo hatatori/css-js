@@ -19,33 +19,36 @@ function rep(texto1, texto2){
         b = i.slice(0,i.indexOf("{"))
         c = i.slice(i.indexOf("{")+1,i.indexOf("}")).trim()
         obj[b] = c
-        }catch(e){}
+        }catch(e){
+            
+        }
     }
 
     
     for(i in obj){
         try{
             r = new RegExp(i+"\\b","g")
-            texto2 = texto2.replaceAll(i,obj[i]+";")
+            texto2 = texto2.replaceAll(i,"; "+obj[i]+";")
+            texto2 = texto2.replace(/;;/g,";")
         }catch(e){}
     }
 
     return texto2
 }
 
-async function cssrender(link_css_1,link_css_2, style_div){
+async function cssrender(link_css_1,link_css_2){
     t1 = await fetch(link_css_1)
     t1 = await t1.text()
 
     t2 = await fetch(link_css_2)
     t2 = await t2.text()
 
-    // r3.innerHTML = rep(t1,t2)
-
     st = document.createElement("style")
     st.innerHTML = rep(t1,t2)
     document.head.appendChild(st)
 
+    // r3.innerHTML = rep(t1,t2)
+    // C:\Users\Hatatori\Desktop\css
     // document.querySelector("#"+style_div).innerHTML = rep(t1,t2)
 }
 
