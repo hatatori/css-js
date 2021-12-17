@@ -13,5 +13,5 @@ cssrender("style1.css", "style2.css")
 ```
 
 ```nodejs
-css.js style1.css style2.css style3.css
+cssn.js style1.css style2.css style3.css
 ```
