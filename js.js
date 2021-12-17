@@ -44,7 +44,7 @@ async function cssrender(link_css_1,link_css_2, style_div){
 
     st = document.createElement("style")
     st.innerHTML = rep(t1,t2)
-    document.body.appendChild(st)
+    document.head.appendChild(st)
 
     // document.querySelector("#"+style_div).innerHTML = rep(t1,t2)
 }
