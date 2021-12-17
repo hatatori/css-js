@@ -33,15 +33,20 @@ function rep(texto1, texto2){
     return texto2
 }
 
-async function go(urla,urlb, stylediv){
-    t1 = await fetch(urla)
+async function cssrender(link_css_1,link_css_2, style_div){
+    t1 = await fetch(link_css_1)
     t1 = await t1.text()
 
-    t2 = await fetch(urlb)
+    t2 = await fetch(link_css_2)
     t2 = await t2.text()
 
     // r3.innerHTML = rep(t1,t2)
-    document.querySelector("#"+stylediv).innerHTML = rep(t1,t2)
+
+    st = document.createElement("style")
+    st.innerHTML = rep(t1,t2)
+    document.body.appendChild(st)
+
+    // document.querySelector("#"+style_div).innerHTML = rep(t1,t2)
 }
 
 // go("tailwind.css","style2.css","r3")
