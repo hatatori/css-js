@@ -1,0 +1,12 @@
+.font-family-segoe{font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+.p-1{padding:10px}
+.m-1 {margin:10px}
+.m-2 {margin:20px}
+.bg-red {background-color: #e74c3c;}
+.rounded { border-radius: 5px;}
+.shadow{ box-shadow: 0px 3px 3px #00000055; }
+.inline-block{display: inline-block;}
+.text-white{color: white;}
+
+.bg-blue{background-color:#3498db;}
+.bg-green{background-color: #27ae60;}
