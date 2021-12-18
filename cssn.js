@@ -23,10 +23,6 @@ function rep(texto1, texto2){
     
     texto2 = texto2.replace(/\{/gm,"\{ ")
     texto2 = texto2.replace(/\}/gm," \}")
-    
-
-    console.log(texto2)
-    
 
     t1 = texto1.split("\r\n").join(" ")
     t2 = texto2.split("\r\n").join(" ")
@@ -43,11 +39,6 @@ function rep(texto1, texto2){
         }
     }
 
-    // propriedades_existentes = texto2
-    // propriedades_existentes = propriedades_existentes.match(/\{.+?\}/g).join("").split("}{").join("").slice(1,-1).replace(/\s{2,}/g,"").split(" ").join("")
-    // propriedades_existentes = propriedades_existentes.split(".").slice(1).map(e=>"."+e)
-    // propriedades_existentes = propriedades_existentes.filter((b,c)=>propriedades_existentes.indexOf(b) == c)
-    
     propriedades_existentes = texto2
     .match(/\{.+?\}/g)
     .join("")
@@ -75,10 +66,7 @@ function rep(texto1, texto2){
     .replace(/undefined;\n\t/gm,"")
     .replace(/\t\s/gm,"\t")
     .replace(/\t\n/gm,"")
-    // .replace(/undefined;\n\t/g,"")
-    // .replace(/undefined;\n/g,"")
-    // .replace(/\t/g,"\t")
-    // .replace(/\t}/g,"}")
+
     
     return texto2
 }
