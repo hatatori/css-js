@@ -51,23 +51,25 @@ function rep(texto1, texto2){
     
     for(i of propriedades_existentes){
         r = new RegExp(i,"g")
-        texto2 = texto2.replace(r,"\t"+obj[i]+";")
+        texto2 = texto2.replace(r,obj[i]+";")
         texto2 = texto2.replace(";;",";")
         texto2 = texto2.replace(";;",";")
         
     }
 
     texto2 = texto2
-    .replace(/\}/g,"}\n\n")
-    .replace(/\{/g,"{\n")
-    .replace(/;/g,";\n")
-    .replace(/^ /gm,"")
-    .replace(/\n{3,}/gm,"\n")
+    .replace(/\}/gm,"\n}\n\n")
+    .replace(/\{/g,"{\n\t")
+    .replace(/;/g,";\n\t")
     .replace(/\n\n$/g,"")
-    .replace(/undefined;\n\t/g,"")
-    .replace(/undefined;\n/g,"")
-    .replace(/\t/g,"\t")
-    .replace(/\t}/g,"}")
+    .replace(/^ /gm,"")
+    .replace(/undefined;\n\t/gm,"")
+    .replace(/\t\s/gm,"\t")
+    .replace(/\t\n/gm,"")
+    // .replace(/undefined;\n\t/g,"")
+    // .replace(/undefined;\n/g,"")
+    // .replace(/\t/g,"\t")
+    // .replace(/\t}/g,"}")
     
     return texto2
 }
