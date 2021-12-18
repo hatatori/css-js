@@ -5,7 +5,6 @@ var myags = process.argv.slice(2);
 function grava(file, txt){ fs.writeFileSync(file,txt) }
 function ler(file){ return fs.readFileSync(file,'utf-8') }
 
-console.log('myArgs: ', myags)
 
 // texto1 = ler('style1.css')
 // texto2 = ler('style2.css')
@@ -35,21 +34,29 @@ function rep(texto1, texto2){
         }
     }
 
+    // propriedades_existentes = texto2
+    // propriedades_existentes = propriedades_existentes.match(/\{.+?\}/g).join("").split("}{").join("").slice(1,-1).replace(/\s{2,}/g,"").split(" ").join("")
+    // propriedades_existentes = propriedades_existentes.split(".").slice(1).map(e=>"."+e)
+    // propriedades_existentes = propriedades_existentes.filter((b,c)=>propriedades_existentes.indexOf(b) == c)
+    
     propriedades_existentes = texto2
-    propriedades_existentes = propriedades_existentes.match(/\{.+?\}/g).join("").split("}{").join("").slice(1,-1).replace(/\s{2,}/g,"").split(" ").join("")
-    propriedades_existentes = propriedades_existentes.split(".").slice(1).map(e=>"."+e)
-    propriedades_existentes = propriedades_existentes.filter((b,c)=>propriedades_existentes.indexOf(b) == c)
+    .match(/\{.+?\}/g)
+    .join("")
+    .replace(/\}\{/g,"")
+    .replace(/\s{2}/g," ")
+    .split(" ")
+    .slice(1,-1)
 
-    // propriedades_existentes = propriedades_existentes.map(e=>"\r\t"+e)
-
-    // console.log(propriedades_existentes)
-
+    propriedades_existentes = propriedades_existentes.map(e=>"."+e)
+    
     for(i of propriedades_existentes){
         r = new RegExp(i,"g")
-        texto2 = texto2.replace(r,obj[i]+";")
+        texto2 = texto2.replace(r,"\t"+obj[i]+";")
         texto2 = texto2.replace(";;",";")
         texto2 = texto2.replace(";;",";")
+        
     }
+
     texto2 = texto2
     .replace(/\}/g,"}\n\n")
     .replace(/\{/g,"{\n")
@@ -57,7 +64,10 @@ function rep(texto1, texto2){
     .replace(/^ /gm,"")
     .replace(/\n{3,}/gm,"\n")
     .replace(/\n\n$/g,"")
+    .replace(/undefined;\n\t/g,"")
     .replace(/undefined;\n/g,"")
+    .replace(/\t/g,"\t")
+    .replace(/\t}/g,"}")
     
     return texto2
 }
