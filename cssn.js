@@ -12,7 +12,6 @@ function extractAllProperties(txt){
     return a1.split(" ")
 }
 
-
 // texto1 = ler('style1.css')
 // texto2 = ler('style2.css')
 
@@ -58,8 +57,6 @@ function rep(texto1, texto2){
     texto2 = texto2
     .replace(/\}/gm,"\n}\n\n")
     .replace(/\{/gm,"{\n\t")
-    // .replace(/;/gm,";\n\t")
-    // .replace(/\n\n$/gm,"")
     .replace(/^ /gm,"")
     .replace(/undefined \n/g,"")
     .replace(/undefined \n/g,"")
