@@ -16,7 +16,16 @@ function rep(texto1, texto2){
 
     texto1 = texto1.replace(/\s{2,}/g," ")
     texto1 = texto1.replace(/ \{/g,"{")
+    
     texto2 = texto2.replace(/\s{2,}/g," ")
+    texto2 = texto2.replace(/\{ /gm,"\{")
+    texto2 = texto2.replace(/ \}/gm,"\}")
+    
+    texto2 = texto2.replace(/\{/gm,"\{ ")
+    texto2 = texto2.replace(/\}/gm," \}")
+    
+
+    console.log(texto2)
     
 
     t1 = texto1.split("\r\n").join(" ")
